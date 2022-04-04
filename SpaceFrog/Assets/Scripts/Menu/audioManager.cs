@@ -26,6 +26,8 @@ public class audioManager : MonoBehaviour
     void Start()
     {
         Play("Menu");
+        Play("Game");
+        
     }
 
     public void Play(string name)
