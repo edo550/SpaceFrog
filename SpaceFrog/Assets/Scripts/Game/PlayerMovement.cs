@@ -18,37 +18,38 @@ public class PlayerMovement : MonoBehaviour
     bool jump = false;
     bool crouch = false;
 
+   
 
     // Update is called once per frame
     void Update()
     {
-        //animator.setFloat("Speed", Mathf.Abs(horizontalMove));
 
-        if (joystick.Horizontal >= .2f)
+        if ((joystick.Horizontal >= .2f))
         {
             horizontalMove = runSpeed;
+            
+            
         }
         else if ((joystick.Horizontal <= -.2f))
         {
             horizontalMove = -runSpeed;
+            
         }
         else
         {
             horizontalMove = 0f;
+            
+            
         }
 
 
-        /*float verticalMove = joystick.Vertical;
-
-
-
-        if (verticalMove >= .5f)
-        {
+        float verticalMove = joystick.Vertical;
+        
+        animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
+         if (verticalMove >= .5f)
             jump = true;
-            //animator.SetBool("IsJump", true);
-        }
 
-        if (verticalMove <= -.5f)
+        else if (verticalMove <= -.5f)
         {
             crouch = true;
 
@@ -56,31 +57,19 @@ public class PlayerMovement : MonoBehaviour
         {
             crouch = false;
         }
-        */
-
-        //if (Input.GetButtonDown("Jump"))
-        //{
-        //    jump = true;
-        //}
-/*
-        if (CrossPlatformInputManager.GetButtonDown("Jump"))
-        {
-            Jump = true;
-        }
-        if (Input.GetButtonDown("Crouch"))
-        {
-            crouch = true;
-        }
-        else if (Input.GetButtonUp("Crouch"))
-        {
-            crouch = false;
-        }
-
-*/
 
     }
 
 
+
+    public void Jumping() {
+        //float verticalMove = joystick.Vertical;
+       // if (verticalMove >= .5f)
+        //{
+            jump = true;
+            animator.SetBool("IsJump", true);
+        
+    }
     public void OnLanding()
     {
         animator.SetBool("IsJump", false);
