@@ -49,6 +49,8 @@ public class PauseMenu : MonoBehaviour
     public void Restart()
     {
         Time.timeScale = 1f;
+        CoinCounterScript.coinAmount = 0;
+        FuelCounterScript.fuelAmount = 0;
         SceneManager.LoadScene("Game");
     }
 

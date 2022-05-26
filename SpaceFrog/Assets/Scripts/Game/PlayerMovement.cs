@@ -18,7 +18,9 @@ public class PlayerMovement : MonoBehaviour
     bool jump = false;
     bool crouch = false;
 
-   
+
+
+
 
     // Update is called once per frame
     void Update()
@@ -27,28 +29,31 @@ public class PlayerMovement : MonoBehaviour
         if ((joystick.Horizontal >= .2f))
         {
             horizontalMove = runSpeed;
-            
-            
+            GetComponent<AudioSource>().UnPause();
         }
         else if ((joystick.Horizontal <= -.2f))
         {
             horizontalMove = -runSpeed;
-            
+            GetComponent<AudioSource>().UnPause();
         }
         else
         {
             horizontalMove = 0f;
-            
-            
+            GetComponent<AudioSource>().Pause();
+
+
         }
 
 
         float verticalMove = joystick.Vertical;
-        
-        animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
-         if (verticalMove >= .5f)
-            jump = true;
 
+        animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
+        if (verticalMove >= .5f) {
+            
+            jump = true;
+            GetComponent<AudioSource>().Pause();
+
+        }
         else if (verticalMove <= -.5f)
         {
             crouch = true;
@@ -64,15 +69,18 @@ public class PlayerMovement : MonoBehaviour
 
     public void Jumping() {
         //float verticalMove = joystick.Vertical;
-       // if (verticalMove >= .5f)
+        // if (verticalMove >= .5f)
         //{
+            
             jump = true;
             animator.SetBool("IsJump", true);
-        
+            GetComponent<AudioSource>().Pause();
+
     }
     public void OnLanding()
     {
         animator.SetBool("IsJump", false);
+        GetComponent<AudioSource>().Pause();
     }
 
     void FixedUpdate()

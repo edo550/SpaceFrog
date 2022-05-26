@@ -31,6 +31,31 @@ public class audioManager : MonoBehaviour
         
     }
 
+    public void Crow()
+    {
+        Play("Crow");
+    }
+    public void Fuel()
+    {
+        Play("Fuel");
+    }
+    public void Coin()
+    {
+        Play("Coin");
+    }
+    public void Run()
+    {
+        Play("Run");
+    }
+    public void Boss()
+    {
+        Play("Boss");
+    }
+    public void TypeWriter()
+    {
+        Play("TypeWriter");
+    }
+
     public void Play(string name)
     {
         Sound s = Array.Find(sounds, sound => sound.name == name);
@@ -40,4 +65,5 @@ public class audioManager : MonoBehaviour
         }
         s.source.Play();
     }
+
 }

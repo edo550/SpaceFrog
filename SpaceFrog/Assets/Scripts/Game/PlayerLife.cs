@@ -5,8 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class PlayerLife : MonoBehaviour
 {
+
     private Rigidbody2D rb;
     private Animator anim;
+    int prova = 1;
 
     [SerializeField] private AudioSource deathSoundEffect;
 
@@ -14,6 +16,7 @@ public class PlayerLife : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -26,15 +29,18 @@ public class PlayerLife : MonoBehaviour
     }
 
     private void Die()
-    {
+    { 
         //deathSoundEffect.Play();
         rb.bodyType = RigidbodyType2D.Static;
         anim.SetTrigger("death");
+        CoinCounterScript.coinAmount = 0;
+        FuelCounterScript.fuelAmount = 0;
+
     }
 
     private void RestartLevel()
     {
-        Time.timeScale = 1f;
-        SceneManager.LoadScene("Game");
+        FindObjectOfType<GameOver>().Game();
+        //SceneManager.LoadScene("Game");
     }
 }
