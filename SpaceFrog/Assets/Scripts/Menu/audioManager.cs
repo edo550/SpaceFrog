@@ -28,6 +28,7 @@ public class audioManager : MonoBehaviour
         Play("Menu");
         Play("Game");
         Play("Bird");
+        Play("Game 1");
         
     }
 
